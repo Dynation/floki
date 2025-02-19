@@ -1,5 +1,6 @@
 import struct
 import yaml
+import re
 
 # 📝 Таблиці ідентифікаторів
 sensor_table = {}
@@ -67,7 +68,6 @@ def compile_floki(code):
         elif line.startswith("event "):
             parts = line.replace("event ", "").split("->")
             event_chain = [x.strip() for x in parts]
-
             for i in range(len(event_chain) - 1):
                 if event_chain[i] in sensor_table:
                     sensor_id = sensor_table[event_chain[i]]
